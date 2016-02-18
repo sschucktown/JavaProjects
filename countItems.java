@@ -1,12 +1,11 @@
+
 import java.util.Scanner;
 
-
-public class isMember 
+public class countItems 
 {
     private static Scanner scanner = new Scanner(System.in);
     private static int arraySize=0;
     private static int [] list;
-    private static int item;
     private static int startIndex;
     
     public static void main(String[] args) 
@@ -20,37 +19,30 @@ public class isMember
             list[j] = scanner.nextInt();
         }
         
-        System.out.println("Enter the item: ");
-        item = scanner.nextInt();
-            
         System.out.println("Enter the  startindex: ");
         startIndex = scanner.nextInt();
         
-        isMember(list, item, startIndex);
+        countItems(list,startIndex);
     }
     
-    public static boolean isMember(int[] list, int item, int startIndex)
+    public static int countItems(int [] list, int startIndex)
     {
-        boolean result;
-        //check, is the list empty?
+        int result = 0;
+        
+        //check if list empty
         if(startIndex==list.length)
         {
-            //is empty
-            result = false;
+            result = 0;
             System.out.println(result);
-        }
-        //exists at least one item in the list, is this is the correct item?
-        else if(list[startIndex]==item)
-        {
-            result = true;
-             System.out.println(result);
         }
         else
         {
-            //recur
-            result = isMember(list, item, (startIndex+1));
+            result = 1+countItems(list, startIndex +1);
+            System.out.println(result);
+            
         }
         return result;
+        //exists at least one item in list
+       
     }
-    
 }
